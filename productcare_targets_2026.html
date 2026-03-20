@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCHURTER – Product Care Targets 2026</title>
+<style>
+/* ── SCHURTER CI ──────────────────────────────────────────────────
+   Primär:    #004F9F  (Schurter Blau)
+   Akzent:    #E30613  (Schurter Rot)
+   Dunkel:    #2C2C2C
+   Grau:      #5A5A5A
+   Hell:      #F0F4F8
+   Border:    #C8D4E0
+   Weiss:     #FFFFFF
+   Font:      Arial, Helvetica, sans-serif
+──────────────────────────────────────────────────────────────── */
+
+:root {
+  --s-blue:    #004F9F;
+  --s-blue-dk: #003A78;
+  --s-blue-lt: #E8EFF7;
+  --s-blue-md: #C5D6EC;
+  --s-red:     #E30613;
+  --s-red-lt:  #FDECEA;
+  --s-dark:    #2C2C2C;
+  --s-grey:    #5A5A5A;
+  --s-mid:     #8C8C8C;
+  --s-light:   #F0F4F8;
+  --s-border:  #C8D4E0;
+  --s-white:   #FFFFFF;
+  --s-green:   #1A7A3C;
+  --s-green-lt:#E6F4EC;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--s-light);
+  color: var(--s-dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  min-height: 100vh;
+  padding: 0 0 60px;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  background: var(--s-blue);
+  color: var(--s-white);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+.topbar-logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--s-white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar-logo .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--s-red); display: inline-block;
+}
+.topbar-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.04em;
+}
+
+/* ── CONTENT WRAP ── */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: var(--s-white);
+  border: 1px solid var(--s-border);
+  border-top: 4px solid var(--s-blue);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.page-header h2 {
+  font-size: 17px; font-weight: 700; color: var(--s-blue);
+  margin-bottom: 3px;
+}
+.page-header p { font-size: 12px; color: var(--s-grey); }
+.page-meta { text-align: right; font-size: 11px; color: var(--s-mid); line-height: 1.8; }
+.page-meta strong { color: var(--s-grey); }
+
+/* ── STEPS ── */
+.steps {
+  display: flex; align-items: center; margin-bottom: 22px;
+  background: var(--s-white); border: 1px solid var(--s-border);
+  border-radius: 4px; padding: 14px 20px;
+}
+.step { display: flex; align-items: center; gap: 10px; }
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--s-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--s-mid);
+  flex-shrink: 0; transition: all 0.25s;
+}
+.step.active .step-num { border-color: var(--s-blue); background: var(--s-blue); color: #fff; }
+.step.done .step-num   { border-color: var(--s-green); background: var(--s-green); color: #fff; }
+.step-label { font-size: 12px; color: var(--s-mid); font-weight: 400; white-space: nowrap; }
+.step.active .step-label { color: var(--s-blue); font-weight: 700; }
+.step.done .step-label   { color: var(--s-green); }
+.step-line { flex: 1; height: 1px; background: var(--s-border); margin: 0 12px; }
+
+/* ── PANELS ── */
+.panel { display: none; animation: fadeIn 0.25s ease; }
+.panel.active { display: block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-size: 10px; font-weight: 700; color: var(--s-blue);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after {
+  content: ''; flex: 1; height: 1px; background: var(--s-blue-md);
+}
+
+/* ── CARD WRAPPER ── */
+.card {
+  background: var(--s-white);
+  border: 1px solid var(--s-border);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+/* ── STEP 1 FIELDS ── */
+.field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label {
+  font-size: 11px; font-weight: 700; color: var(--s-grey);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.field input, .field select {
+  background: var(--s-white); border: 1px solid var(--s-border); border-radius: 3px;
+  color: var(--s-dark); font-family: Arial, Helvetica, sans-serif; font-size: 13px;
+  padding: 9px 12px; transition: border-color 0.2s; appearance: none;
+}
+.field input:focus, .field select:focus {
+  outline: none; border-color: var(--s-blue); box-shadow: 0 0 0 2px rgba(0,79,159,0.12);
+}
+.field input::placeholder { color: var(--s-mid); }
+
+.role-hint {
+  background: var(--s-blue-lt); border: 1px solid var(--s-blue-md);
+  border-left: 3px solid var(--s-blue);
+  border-radius: 3px; padding: 10px 14px; font-size: 12px; color: var(--s-blue-dk);
+  margin-bottom: 20px; display: none;
+}
+.role-hint.show { display: block; }
+
+/* ── TARGET CARDS ── */
+.target-card {
+  background: var(--s-white); border: 1px solid var(--s-border);
+  border-radius: 4px; margin-bottom: 8px; overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.target-card:hover { border-color: var(--s-blue); }
+.target-card.has-selection {
+  border-color: var(--s-blue);
+  box-shadow: 0 0 0 2px rgba(0,79,159,0.1);
+}
+
+.target-header {
+  display: grid; grid-template-columns: 60px 1fr auto 22px;
+  align-items: center; gap: 12px; padding: 12px 16px;
+  cursor: pointer; user-select: none;
+  background: var(--s-white);
+}
+.target-header:hover { background: var(--s-light); }
+
+.target-id {
+  font-size: 12px; font-weight: 700;
+  color: var(--s-white); background: var(--s-blue);
+  border-radius: 3px; padding: 4px 8px; text-align: center; white-space: nowrap;
+}
+.target-card.has-selection .target-id { background: var(--s-blue-dk); }
+
+.target-title-wrap strong { font-size: 13px; color: var(--s-dark); }
+.target-title-wrap small {
+  display: block; font-size: 10px; color: var(--s-mid); margin-top: 2px;
+}
+
+.sel-count {
+  font-size: 10px; font-weight: 700;
+  background: var(--s-blue); color: #fff;
+  border-radius: 10px; padding: 2px 8px;
+  display: none; white-space: nowrap;
+}
+.sel-count.show { display: inline-block; }
+
+.expand-icon {
+  color: var(--s-mid); font-size: 16px; font-weight: 700;
+  transition: transform 0.2s; text-align: center; line-height: 1;
+}
+.target-card.open .expand-icon { transform: rotate(45deg); color: var(--s-blue); }
+
+.target-body { display: none; padding: 0 16px 16px; border-top: 1px solid var(--s-border); }
+.target-card.open .target-body { display: block; }
+
+.desc-box {
+  background: var(--s-light); border-left: 3px solid var(--s-blue);
+  padding: 9px 12px; margin: 12px 0; font-size: 12px; color: var(--s-grey); line-height: 1.55;
+}
+
+.kpi-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.kpi-pill {
+  font-size: 10px; font-weight: 700; padding: 3px 8px;
+  border-radius: 2px; border: 1px solid;
+}
+.kpi-pill.g { color: var(--s-green); border-color: #9ACDB0; background: var(--s-green-lt); }
+.kpi-pill.b { color: var(--s-blue); border-color: var(--s-blue-md); background: var(--s-blue-lt); }
+.kpi-pill.y { color: #7A5800; border-color: #E8C97A; background: #FEF9E7; }
+
+/* ── GOAL CHECKBOXES ── */
+.goals-label {
+  font-size: 10px; font-weight: 700; color: var(--s-grey);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px;
+}
+
+.goal-item {
+  background: var(--s-light); border: 1px solid var(--s-border);
+  border-radius: 3px; margin-bottom: 6px; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.goal-item.checked {
+  border-color: var(--s-blue); background: var(--s-blue-lt);
+}
+
+.goal-check-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; cursor: pointer;
+}
+.goal-check-row input[type="checkbox"] {
+  width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px;
+  accent-color: var(--s-blue); cursor: pointer;
+}
+.goal-text { font-size: 12px; color: var(--s-dark); line-height: 1.5; }
+.goal-item.checked .goal-text { color: var(--s-blue-dk); }
+
+/* ── DATE + GEWICHTUNG PARAMS ── */
+.goal-params {
+  display: none; padding: 10px 12px 12px 37px;
+  border-top: 1px solid var(--s-blue-md);
+  background: var(--s-white);
+}
+.goal-item.checked .goal-params { display: block; }
+
+.params-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.param-field { display: flex; flex-direction: column; gap: 4px; }
+.param-field label {
+  font-size: 10px; font-weight: 700; color: var(--s-grey);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.param-field input, .param-field select {
+  background: var(--s-white); border: 1px solid var(--s-border); border-radius: 3px;
+  color: var(--s-dark); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+  padding: 7px 10px; transition: border-color 0.2s; appearance: none;
+}
+.param-field input:focus, .param-field select:focus {
+  outline: none; border-color: var(--s-blue);
+}
+
+.pct-row { display: flex; align-items: center; gap: 8px; }
+.pct-row select { flex: 1; }
+.pct-badge {
+  font-size: 12px; font-weight: 700;
+  color: var(--s-blue); background: var(--s-blue-lt);
+  border: 1px solid var(--s-blue-md); border-radius: 3px;
+  padding: 4px 9px; white-space: nowrap; min-width: 46px; text-align: center;
+}
+
+.weight-total {
+  margin-top: 12px; padding: 8px 12px; border-radius: 3px;
+  font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px;
+}
+.weight-total.ok      { background: var(--s-green-lt); color: var(--s-green); border: 1px solid #9ACDB0; }
+.weight-total.over    { background: #FEF9E7; color: #7A5800; border: 1px solid #E8C97A; }
+.weight-total.under   { background: var(--s-red-lt); color: var(--s-red); border: 1px solid #F4A0A5; }
+
+.no-goals-msg {
+  font-size: 12px; color: var(--s-mid); font-style: italic; padding: 6px 0;
+}
+
+.indiv-goal-row {
+  display: grid; grid-template-columns: 1fr 160px 100px 32px;
+  gap: 8px; align-items: center; margin-bottom: 8px;
+}
+.indiv-goal-row input[type="text"] {
+  background: var(--s-white); border: 1px solid var(--s-border); border-radius: 3px;
+  color: var(--s-dark); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+  padding: 8px 10px; transition: border-color 0.2s; width: 100%;
+}
+.indiv-goal-row input[type="text"]:focus { outline: none; border-color: var(--s-blue); }
+.indiv-goal-row input[type="text"]::placeholder { color: var(--s-mid); }
+.indiv-goal-row select {
+  background: var(--s-white); border: 1px solid var(--s-border); border-radius: 3px;
+  color: var(--s-dark); font-family: Arial, Helvetica, sans-serif; font-size: 12px;
+  padding: 8px 10px; appearance: none; transition: border-color 0.2s; width: 100%;
+}
+.indiv-goal-row select:focus { outline: none; border-color: var(--s-blue); }
+.indiv-row-label {
+  display: grid; grid-template-columns: 1fr 160px 100px 32px;
+  gap: 8px; margin-bottom: 6px;
+  font-size: 10px; font-weight: 700; color: var(--s-grey);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.btn-remove {
+  width: 28px; height: 28px; border-radius: 3px; border: 1px solid var(--s-border);
+  background: var(--s-white); color: var(--s-mid); font-size: 16px; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s; flex-shrink: 0;
+}
+.btn-remove:hover { background: var(--s-red-lt); color: var(--s-red); border-color: #F4A0A5; }
+
+/* ── SUMMARY ── */
+.summary-block {
+  background: var(--s-white); border: 1px solid var(--s-border);
+  border-top: 4px solid var(--s-blue);
+  border-radius: 4px; padding: 22px; margin-bottom: 20px;
+}
+
+.summary-person {
+  display: flex; gap: 32px; margin-bottom: 20px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--s-border); flex-wrap: wrap;
+}
+.person-field { display: flex; flex-direction: column; gap: 3px; }
+.pf-label {
+  font-size: 10px; font-weight: 700; color: var(--s-mid);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.pf-value { font-size: 15px; font-weight: 700; color: var(--s-dark); }
+.pf-value.role { color: var(--s-blue); font-size: 13px; }
+.pf-value.small { font-size: 13px; color: var(--s-grey); font-weight: 400; }
+
+.summary-targets { display: grid; gap: 10px; }
+
+.s-target-block {
+  border: 1px solid var(--s-border); border-radius: 3px; overflow: hidden;
+}
+.s-target-head {
+  display: grid; grid-template-columns: 58px 1fr;
+  gap: 12px; align-items: center; padding: 9px 14px;
+  background: var(--s-blue-lt); border-bottom: 1px solid var(--s-blue-md);
+}
+.s-tid {
+  font-size: 11px; font-weight: 700;
+  color: var(--s-white); background: var(--s-blue);
+  border-radius: 3px; padding: 3px 7px; text-align: center;
+}
+.s-tname { font-size: 12px; font-weight: 700; color: var(--s-blue-dk); }
+
+.s-col-head {
+  display: grid; grid-template-columns: 1fr 110px 80px;
+  gap: 12px; padding: 6px 14px;
+  background: #EEF2F7; border-bottom: 1px solid var(--s-border);
+  font-size: 10px; font-weight: 700; color: var(--s-grey);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+.s-goal-row {
+  display: grid; grid-template-columns: 1fr 110px 80px;
+  gap: 12px; align-items: center; padding: 9px 14px;
+  border-bottom: 1px solid #EEF2F7; font-size: 12px;
+}
+.s-goal-row:last-child { border-bottom: none; }
+.s-goal-text { color: var(--s-dark); line-height: 1.45; }
+.s-date { color: var(--s-blue); font-size: 11px; font-weight: 700; text-align: center; }
+.s-pct  { font-size: 12px; font-weight: 700; color: var(--s-blue); text-align: center; }
+
+.empty-note { color: var(--s-mid); font-size: 12px; font-style: italic; padding: 8px 0; }
+
+/* ── BUTTONS ── */
+.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 18px;
+  border-radius: 3px; font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px; font-weight: 700; cursor: pointer; border: none;
+  transition: background 0.2s, opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+.btn:hover { opacity: 0.88; }
+.btn-primary   { background: var(--s-blue); color: #fff; }
+.btn-primary:hover { background: var(--s-blue-dk); opacity: 1; }
+.btn-secondary { background: var(--s-white); color: var(--s-blue); border: 1.5px solid var(--s-blue); }
+.btn-danger    { background: var(--s-white); color: var(--s-grey); border: 1.5px solid var(--s-border); }
+.btn-pdf       { background: var(--s-red); color: #fff; }
+.btn-pdf:hover { background: #B5000F; opacity: 1; }
+
+/* ── PRINT ── */
+.print-header { display: none; }
+
+@media print {
+  @page { margin: 14mm 16mm; size: A4; }
+
+  body { background: #fff !important; color: #111 !important; padding: 0 !important; font-family: Arial, Helvetica, sans-serif !important; }
+  .topbar, .steps, #panel-1, #panel-2, .btn-row, .content > .page-header { display: none !important; }
+  .content { padding: 0 !important; max-width: 100% !important; }
+  #panel-3 { display: block !important; }
+
+  .print-header {
+    display: flex !important; justify-content: space-between; align-items: center;
+    border-bottom: 3px solid #004F9F; padding-bottom: 10px; margin-bottom: 18px;
+  }
+  .print-header-left h1 { font-size: 15px; font-weight: 700; color: #004F9F; }
+  .print-header-left p  { font-size: 10px; color: #5A5A5A; margin-top: 2px; }
+  .print-header-right   { font-size: 10px; color: #8C8C8C; text-align: right; line-height: 1.7; }
+
+  .summary-block { border-top: 3px solid #004F9F !important; box-shadow: none !important; }
+  .section-label { color: #004F9F !important; }
+  .summary-person { border-bottom: 1px solid #C8D4E0 !important; }
+  .pf-label { color: #8C8C8C !important; }
+  .pf-value { color: #2C2C2C !important; }
+  .pf-value.role { color: #004F9F !important; }
+  .pf-value.small { color: #5A5A5A !important; }
+
+  .s-target-block { page-break-inside: avoid; border: 1px solid #C8D4E0 !important; }
+  .s-target-head  { background: #E8EFF7 !important; border-bottom: 1px solid #C8D4E0 !important; }
+  .s-tid   { background: #004F9F !important; color: #fff !important; }
+  .s-tname { color: #003A78 !important; }
+  .s-col-head { background: #F0F4F8 !important; color: #5A5A5A !important; }
+  .s-goal-text { color: #2C2C2C !important; }
+  .s-date { color: #004F9F !important; }
+  .s-pct  { color: #004F9F !important; }
+  .empty-note { color: #8C8C8C !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <span class="dot"></span>
+    SCHURTER
+  </div>
+  <div class="topbar-sub">R&amp;D Product Care · Targets 2026</div>
+</div>
+
+<div class="content">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <h2>Zielvereinbarung 2026</h2>
+      <p>R&amp;D Product Care · Individuelle Zielzuweisung nach Funktion</p>
+    </div>
+    <div class="page-meta">
+      <div><strong>Sponsor:</strong> CTO / PM</div>
+      <div><strong>Owner:</strong> Martin Alig</div>
+      <div><strong>Stand:</strong> Januar 2026</div>
+    </div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps">
+    <div class="step active" id="step-1"><div class="step-num">1</div><div class="step-label">Mitarbeiter</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step-2"><div class="step-num">2</div><div class="step-label">Ziele auswählen</div></div>
+    <div class="step-line"></div>
+    <div class="step" id="step-3"><div class="step-num">3</div><div class="step-label">Zusammenfassung &amp; PDF</div></div>
+  </div>
+
+  <!-- ═══ PANEL 1 ═══ -->
+  <div class="panel active" id="panel-1">
+    <div class="card" style="padding:22px 24px;">
+      <div class="section-label">Schritt 1 – Mitarbeiter erfassen</div>
+
+      <div class="field-group">
+        <div class="field">
+          <label>Vorname</label>
+          <input type="text" id="inp-vorname" placeholder="z. B. Anna" oninput="updateHint()">
+        </div>
+        <div class="field">
+          <label>Nachname</label>
+          <input type="text" id="inp-nachname" placeholder="z. B. Müller" oninput="updateHint()">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label>Funktion / Rolle</label>
+          <select id="inp-rolle" onchange="updateHint()">
+            <option value="">– Bitte auswählen –</option>
+            <option value="bid">Bid Engineer</option>
+            <option value="ee">Electrical Engineer</option>
+            <option value="me">Mechanical Engineer</option>
+            <option value="ko">Konstrukteur / CAD</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Abteilung / Team</label>
+          <input type="text" id="inp-abt" placeholder="z. B. Product Care EMC">
+        </div>
+      </div>
+
+      <div class="role-hint" id="role-hint"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goToStep2()">Weiter → Ziele auswählen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PANEL 2 ═══ -->
+  <div class="panel" id="panel-2">
+    <div class="section-label" id="p2-label">Schritt 2 – Ziele auswählen</div>
+    <div id="targets-container"></div>
+
+    <!-- INDIVIDUELLE ZIELE -->
+    <div class="target-card" id="card-indiv" style="margin-top:4px">
+      <div class="target-header" onclick="toggleCard('indiv')">
+        <div class="target-id" style="background:#5A5A5A">IND</div>
+        <div class="target-title-wrap">
+          <strong>Individuelle Ziele</strong>
+          <small>Freie Zieleingabe · Funktionsspezifisch</small>
+        </div>
+        <span class="sel-count" id="badge-indiv"></span>
+        <div class="expand-icon">+</div>
+      </div>
+      <div class="target-body">
+        <div class="desc-box" style="border-left-color:#5A5A5A">
+          Hier können individuelle, funktionsspezifische Ziele frei definiert werden. Bis zu 5 Ziele möglich.
+        </div>
+        <div class="goals-label">Individuelle Ziele erfassen</div>
+        <div id="indiv-goals-list"></div>
+        <button class="btn btn-secondary" style="margin-top:8px;font-size:11px;padding:7px 14px" onclick="addIndivGoal()">+ Ziel hinzufügen</button>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goToStep(1)">← Zurück</button>
+      <button class="btn btn-primary" onclick="goToStep3()">Weiter → Zusammenfassung</button>
+    </div>
+  </div>
+
+  <!-- ═══ PANEL 3 ═══ -->
+  <div class="panel" id="panel-3">
+
+    <!-- PRINT ONLY HEADER -->
+    <div class="print-header">
+      <div class="print-header-left">
+        <h1>SCHURTER AG – R&amp;D Product Care · Targets 2026</h1>
+        <p>Zielvereinbarung · Stand Januar 2026</p>
+      </div>
+      <div class="print-header-right" id="print-meta"></div>
+    </div>
+
+    <div class="summary-block">
+      <div class="section-label">Zusammenfassung – Zielvereinbarung 2026</div>
+      <div class="summary-person">
+        <div class="person-field">
+          <span class="pf-label">Mitarbeiter/in</span>
+          <span class="pf-value" id="sum-name">–</span>
+        </div>
+        <div class="person-field">
+          <span class="pf-label">Funktion</span>
+          <span class="pf-value role" id="sum-rolle">–</span>
+        </div>
+        <div class="person-field">
+          <span class="pf-label">Abteilung</span>
+          <span class="pf-value small" id="sum-abt">–</span>
+        </div>
+      </div>
+      <div class="summary-targets" id="sum-targets">
+        <div class="empty-note">Keine Ziele wurden zugewiesen.</div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="goToStep(2)">← Zurück</button>
+      <button class="btn btn-danger" onclick="resetAll()">↺ Neu beginnen</button>
+      <button class="btn btn-pdf" onclick="exportPDF()">⬇ PDF exportieren</button>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+
+const ROLE_LABELS = {
+  bid: 'Bid Engineer',
+  ee:  'Electrical Engineer',
+  me:  'Mechanical Engineer',
+  ko:  'Konstrukteur / CAD',
+};
+
+const ROLE_HINTS = {
+  bid: 'Bid Engineers: Ziele rund um NBO-Prozesse, Angebotsdisziplin und must-win Hitrate.',
+  ee:  'Electrical Engineers: Machbarkeitsprüfungen, technische GTO-Ownership und Change-Board-Rollen.',
+  me:  'Mechanical Engineers: Change Management, GTO-Transfer und Beitrag zur Laufzeitreduktion.',
+  ko:  'Konstrukteure / CAD: Dokumentationsqualität und Timing bei Change- und Custom-Projekten.',
+};
+
+const TARGETS = [
+  { id:'2.1', key:'21', title:'NBO-Prozess für Sonderprodukte', sub:'Custom Product Workflow · Sponsor: PM',
+    desc:'Effektiver, transparenter NBO-Managementprozess für customized products mit klaren Rollen aller Stakeholder. Fokus: EMC &amp; Switches. Ziel: 100% Completion bis M03/26.',
+    kpis:[['g','✓ 100% Completion'],['b','Deadline: M03/2026'],['y','EMC · Switches']] },
+  { id:'3.1', key:'31', title:'Change Management – Rollen &amp; Prozess', sub:'Product Change Workflow · Sponsor: CTO',
+    desc:'Effektiver, transparenter Change-Management-Prozess mit klaren Rollen und Verantwortlichkeiten aller Beteiligten. Abschluss aller Prozessdefinitionen bis M09/26.',
+    kpis:[['g','✓ 100% Completion'],['b','Deadline: M09/2026']] },
+  { id:'3.2', key:'32', title:'GTO-Transfer – Technical Ownership', sub:'Global Technical Ownership · Sponsor: CTO',
+    desc:'Abschluss der Übertragung des Global Technical Ownership (GTO) an Engineering Hubs für geplante Produktgruppen. Vollständige Dokumentation und Übergabe bis M06/26.',
+    kpis:[['g','✓ 100% Completion'],['b','Deadline: M06/2026']] },
+  { id:'5.4', key:'54', title:'Laufzeit Product Changes ≤ 16 Wochen', sub:'Ø Runtime Product Changes · Sponsor: CTO',
+    desc:'Durchschnittliche Laufzeit von Product-Change-Projekten (Change Request bis PCN) auf max. 16 Wochen reduzieren. Messung kumuliert bis M12/26.',
+    kpis:[['g','✓ ≤ 16 Wochen Ø'],['b','Deadline: M12/2026'],['y','KPI: Wochen']] },
+  { id:'5.5', key:'55', title:'Must-win NBO Hitrate ≥ 90%', sub:'NBO Won Rate · Sponsor: PM / GTM',
+    desc:'Gewonnene NBOs von allen als "must-win" definierten Angeboten mit Engineering-Beitrag: Ziel ≥ 90% Hitrate bis M12/26.',
+    kpis:[['g','✓ ≥ 90% Hitrate'],['b','Deadline: M12/2026'],['y','Leading KPI']] },
+];
+
+const GOALS = {
+  '21': {
+    bid:['Bearbeitung aller Custom-NBOs nach definiertem Workflow (Vollständigkeitscheck, Freigabe, Rückmeldung)',
+         'Sicherstellung vollständiger technischer Unterlagen bei NBO-Einreichung (Spezifikation, Zeichnung, Toleranzen) → 0 Rückfragen wegen fehlender Daten',
+         'Aktive Mitgestaltung des NBO-Rollout-Prozesses: Feedback-Runden, Prozessdokumentation und Schulung der Stakeholder'],
+    ee: ['Technische Machbarkeitsprüfung für Custom-NBOs innerhalb von 5 Arbeitstagen → gemessen an allen eingegangenen Anfragen',
+         'Klärung elektrischer Anforderungen und Abgrenzung Standard vs. Custom bei EMC-Produkten → Dokumentation in NBO-Akte',
+         'Mitarbeit an Standardisierung der Machbarkeitsbewertung: gemeinsame Checkliste für EE bei Custom-Anfragen'],
+    me: ['Mechanische Machbarkeitsprüfung für Custom-Gehäuse und -Anschlusskonfigurationen innerhalb von 5 AT → 100% Rückmeldequote',
+         'Bereitstellung normgerechter Zeichnungsunterlagen für Custom-NBOs (Erstmuster, Masszeichnung) innerhalb definierten Timings'],
+    ko: ['Erstellung vollständiger CAD-Erstunterlagen für Custom-Anfragen (Zeichnung, Stückliste) nach definierten Vorlagen',
+         'Sicherstellung der Änderungsnachverfolgung in PDM/PLM bei Custom-Projekten: 0 unkontrollierte Revisionen'],
+  },
+  '31': {
+    bid:['Aktive Rolle im Change-Prozess: Sicherstellung, dass angebotsbezogene Produktänderungen (PCN-Auswirkung) mit Sales/PM koordiniert werden',
+         'Review und Freigabe aller kundenseitiger Änderungsanfragen innerhalb von 3 AT → Rückverfolgbarkeit im Change-Tracker'],
+    ee: ['Übernahme der technischen Prüfrolle im Change-Board: Validierung elektrischer Auswirkungen bei Produktänderungen → 100% abgedeckt',
+         'Mitgestaltung der Rollenbeschreibung im Change-Prozess für Engineering (RACI):',
+         'Reduzierung von Rückfragen durch vollständige Änderungsdokumentation (Erstautor) bei allen eigenen ECOs'],
+    me: ['Übernahme der technischen Prüfrolle im Change-Board für mechanische Änderungen → dokumentierte Freigabe bei allen relevanten Changes',
+         'Aktive Mitarbeit an Prozessdokumentation'],
+    ko: ['Sicherstellung korrekter Revisionsstände in PDM bei allen durchgeführten Änderungen → 0 Rückmeldungen wegen falscher Dokumente',
+         'Mitarbeit am Change-Dokumentations-Rollout: Zeichnung, Stückliste, Revision vollständig umgesetzt'],
+  },
+  '32': {
+    bid:['Dokumentation des Produkt-Know-hows für zugeordnete Produktgruppen (Angebotsrelevanz, Sonderkonfigurationen) → Übergabe an GTO-Hub bis M06/26'],
+    ee: ['Vollständige Übergabe der technischen GTO-Unterlagen (Schaltplan, Prüfspez., Toleranzdoku.) ',
+         'Schulung der Engineering-Hub-Kollegen: mind. 1 technisches Briefing pro GTO-Produktgruppe',
+         'Sicherstellung lückenloser Dokumentationsqualität für GTO-Transfer: 0 offene Review-Kommentare'],
+    me: ['Übergabe aller mechanischen GTO-Dokumente (Zeichnungen, Toleranzblätter, Massprotokolle)',
+         'Verfügbarkeit für Remote-Schulung des Ziel-Hubs: mind. 2h dokumentiertes Briefing pro Produktgruppe'],
+    ko: ['Bereinigung und vollständige Freigabe aller CAD-Daten für GTO-Produktgruppen in PDM/PLM',
+         'Erstellung einer Übergabe-Checkliste (Zeichnungsstand, Stückliste, Revisionsstatus) pro GTO-Produktgruppe'],
+  },
+  '54': {
+    bid:['Vollständige Anforderungsklärung bei Kundenanfragen vor Übergabe an Engineering: Reduzierung von Klärungsschleifen um 30%',
+         'Tracking aller offenen Kundenantworten in Change-Anfragen: wöchentliches Follow-up bis Rückmeldung'],
+    ee: ['Abschluss der eigenen Engineering-Tasks im Change-Projekt im geplanten Zeitfenster → Beitrag zu Ø ≤ 16 Wochen',
+         'Identifikation und Meldung von Prozesshindernissen, die zu Verzögerungen führen → monatliches Reporting',
+         'Reduzierung von Iterationen durch bessere Erstqualität (Schaltplan, Testspezifikation): max. 1 Review-Loop pro ECO'],
+    me: ['Abschluss mechanischer Engineering-Tasks für Changes innerhalb des vereinbarten Timings → Beitrag zu Ø ≤ 16 Wochen',
+         'Reduzierung von Zeichnungsfehlern durch strukturierten Self-Review vor Freigabe: max. 1 Feedback-Schleife pro Änderung'],
+    ko: ['Abschluss von Zeichnungs- und Stücklistenänderungen innerhalb von 3 AT nach Auftragseingang → gemessen an allen ECOs',
+         'Sicherstellung, dass PDM-Aktualisierungen parallel zur Fertigung erfolgen: 0 Verzögerungen durch fehlende Dokumente'],
+  },
+  '55': {
+    bid:['Aktive Beteiligung an allen als "must-win" definierten NBOs: vollständige Engineering-Unterlagen fristgerecht geliefert → Beitrag zu ≥ 90% Hitrate',
+         'Monatliche Abstimmung mit PM/Sales über must-win Status und Priorisierung eigener Kapazität',
+         'Nachbereitung verlorener NBOs: Ursachenanalyse und Lessons-Learned für alle lost must-wins'],
+    ee: ['Technische Machbarkeitsaussage für must-win NBOs innerhalb von 3 AT → 100% Liefertreue bei priorisierten Anfragen',
+         'Proaktive Einbringung von technischen Differenzierungsargumenten (Leistung, Zulassungen, Varianten) in den Angebotsprozess'],
+    me: ['Mechanische Machbarkeitsprüfung für must-win NBOs innerhalb von 3 AT → Beitrag zur ≥ 90% Hitrate',
+         'Bereitstellung von Zeichnungsunterlagen und Kostenabschätzung für Custom-must-win-Anfragen innerhalb vereinbartem Timing'],
+    ko: ['Bereitstellung von CAD-Vorabdaten / Konzeptzeichnungen für must-win NBOs innerhalb von 3 AT nach Auftragseingang'],
+  },
+};
+
+// ── STATE ──────────────────────────────────────────────────────────
+let currentRole = '';
+const selections = {};
+
+// ── NAVIGATION ─────────────────────────────────────────────────────
+function goToStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById(`panel-${i}`).classList.toggle('active', i===n);
+    const s = document.getElementById(`step-${i}`);
+    s.classList.remove('active','done');
+    if (i===n) s.classList.add('active');
+    else if (i<n) s.classList.add('done');
+  });
+  window.scrollTo(0,0);
+}
+
+function goToStep2() {
+  const vn = document.getElementById('inp-vorname').value.trim();
+  const nn = document.getElementById('inp-nachname').value.trim();
+  const rl = document.getElementById('inp-rolle').value;
+  if (!vn || !nn || !rl) { alert('Bitte Vorname, Nachname und Funktion angeben.'); return; }
+  currentRole = rl;
+  buildTargets(rl);
+  document.getElementById('p2-label').textContent = `Schritt 2 – Ziele auswählen · ${ROLE_LABELS[rl]}`;
+  goToStep(2);
+}
+
+function goToStep3() {
+  collectFromDOM();
+  buildSummary();
+  goToStep(3);
+}
+
+// ── HINT ───────────────────────────────────────────────────────────
+function updateHint() {
+  const rl = document.getElementById('inp-rolle').value;
+  const el = document.getElementById('role-hint');
+  el.textContent = rl ? ROLE_HINTS[rl] : '';
+  el.classList.toggle('show', !!rl);
+}
+
+// ── BUILD TARGETS ──────────────────────────────────────────────────
+function buildTargets(role) {
+  const container = document.getElementById('targets-container');
+  container.innerHTML = '';
+
+  TARGETS.forEach(t => {
+    const roleGoals = GOALS[t.key][role] || [];
+    const saved = selections[t.key] || [];
+
+    const card = document.createElement('div');
+    card.className = 'target-card';
+    card.id = `card-${t.key}`;
+
+    const countBadge = `<span class="sel-count ${saved.length?'show':''}" id="badge-${t.key}">${saved.length} gew.</span>`;
+
+    card.innerHTML = `
+      <div class="target-header" onclick="toggleCard('${t.key}')">
+        <div class="target-id">${t.id}</div>
+        <div class="target-title-wrap">
+          <strong>${t.title}</strong>
+          <small>${t.sub}</small>
+        </div>
+        ${countBadge}
+        <div class="expand-icon">+</div>
+      </div>
+      <div class="target-body">
+        <div class="desc-box">${t.desc}</div>
+        <div class="goals-label">Ziele auswählen – ${ROLE_LABELS[role]}</div>
+        <div id="goals-${t.key}"></div>
+        <div id="wtotal-${t.key}" class="weight-total" style="display:none"></div>
+      </div>
+    `;
+    container.appendChild(card);
+
+    const goalsContainer = document.getElementById(`goals-${t.key}`);
+    if (roleGoals.length === 0) {
+      goalsContainer.innerHTML = `<div class="no-goals-msg">Für diese Funktion ist kein spezifisches Ziel in diesem Target vorgesehen.</div>`;
+      return;
+    }
+
+    roleGoals.forEach((goalText, gi) => {
+      const savedEntry = saved.find(s => s.text === goalText);
+      const isChecked  = !!savedEntry;
+      const savedDate  = savedEntry?.date || '';
+      const savedPct   = savedEntry?.pct  || '';
+
+      const item = document.createElement('div');
+      item.className = `goal-item${isChecked?' checked':''}`;
+      item.id = `gi-${t.key}-${gi}`;
+
+      item.innerHTML = `
+        <div class="goal-check-row" onclick="toggleGoal('${t.key}',${gi})">
+          <input type="checkbox" id="chk-${t.key}-${gi}" ${isChecked?'checked':''}
+            onclick="event.stopPropagation();toggleGoal('${t.key}',${gi})">
+          <label class="goal-text" for="chk-${t.key}-${gi}">${goalText}</label>
+        </div>
+        <div class="goal-params">
+          <div class="params-grid">
+            <div class="param-field">
+              <label>Zieldatum</label>
+              <select id="date-${t.key}-${gi}" onchange="updateBadge('${t.key}')">
+                ${buildDateOptions(savedDate)}
+              </select>
+            </div>
+            <div class="param-field">
+              <label>Gewichtung (%)</label>
+              <div class="pct-row">
+                <select id="pct-${t.key}-${gi}" onchange="updatePctBadge('${t.key}',${gi});updateWeightTotal()">
+                  <option value="">–</option>
+                  ${[20,40,60,80,100].map(v=>
+                    `<option value="${v}" ${savedPct==v?'selected':''}>${v}%</option>`).join('')}
+                </select>
+                <div class="pct-badge" id="pctbadge-${t.key}-${gi}">${savedPct?savedPct+'%':'–'}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      goalsContainer.appendChild(item);
+    });
+  });
+}
+
+function toggleCard(key) {
+  document.getElementById(`card-${key}`).classList.toggle('open');
+}
+
+function toggleGoal(tKey, gi) {
+  const item = document.getElementById(`gi-${tKey}-${gi}`);
+  const chk  = document.getElementById(`chk-${tKey}-${gi}`);
+  chk.checked = !chk.checked;
+  item.classList.toggle('checked', chk.checked);
+  updateBadge(tKey);
+  updateWeightTotal();
+}
+
+function updateBadge(tKey) {
+  const roleGoals = GOALS[tKey][currentRole] || [];
+  let count = 0;
+  roleGoals.forEach((_,gi) => {
+    const chk = document.getElementById(`chk-${tKey}-${gi}`);
+    if (chk?.checked) count++;
+  });
+  const badge = document.getElementById(`badge-${tKey}`);
+  const card  = document.getElementById(`card-${tKey}`);
+  if (badge) { badge.textContent=`${count} gew.`; badge.classList.toggle('show',count>0); }
+  if (card)  card.classList.toggle('has-selection', count>0);
+}
+
+function updatePctBadge(tKey, gi) {
+  const sel   = document.getElementById(`pct-${tKey}-${gi}`);
+  const badge = document.getElementById(`pctbadge-${tKey}-${gi}`);
+  badge.textContent = sel.value ? sel.value+'%' : '–';
+}
+
+// ── DATE DROPDOWN (CH Format, Monatsende 2026, Default 31.12.2026) ─
+function buildDateOptions(savedVal) {
+  const months = [
+    ['31.01.2026','31. Januar 2026'],
+    ['28.02.2026','28. Februar 2026'],
+    ['31.03.2026','31. März 2026'],
+    ['30.04.2026','30. April 2026'],
+    ['31.05.2026','31. Mai 2026'],
+    ['30.06.2026','30. Juni 2026'],
+    ['31.07.2026','31. Juli 2026'],
+    ['31.08.2026','31. August 2026'],
+    ['30.09.2026','30. September 2026'],
+    ['31.10.2026','31. Oktober 2026'],
+    ['30.11.2026','30. November 2026'],
+    ['31.12.2026','31. Dezember 2026'],
+  ];
+  const def = savedVal || '31.12.2026';
+  return months.map(([val, label]) =>
+    `<option value="${val}" ${val===def?'selected':''}>${label}</option>`
+  ).join('');
+}
+
+function updateWeightTotal() {
+  // Sum all checked+weighted goals across all targets
+  let total = 0;
+  TARGETS.forEach(t => {
+    const roleGoals = GOALS[t.key][currentRole] || [];
+    roleGoals.forEach((_, gi) => {
+      const chk = document.getElementById(`chk-${t.key}-${gi}`);
+      const sel = document.getElementById(`pct-${t.key}-${gi}`);
+      if (chk?.checked && sel?.value) total += parseInt(sel.value);
+    });
+  });
+  // add individuelle Ziele
+  document.querySelectorAll('.indiv-goal-row').forEach(r => {
+    const id  = r.id.replace('indiv-row-','');
+    const txt = document.getElementById(`indiv-text-${id}`)?.value.trim();
+    const sel = document.getElementById(`indiv-pct-${id}`);
+    if (txt && sel?.value) total += parseInt(sel.value);
+  });
+
+  // Update per-target totals
+  TARGETS.forEach(t => {
+    const el = document.getElementById(`wtotal-${t.key}`);
+    if (!el) return;
+    const roleGoals = GOALS[t.key][currentRole] || [];
+    let tTotal = 0; let hasAny = false;
+    roleGoals.forEach((_, gi) => {
+      const chk = document.getElementById(`chk-${t.key}-${gi}`);
+      const sel = document.getElementById(`pct-${t.key}-${gi}`);
+      if (chk?.checked) { hasAny = true; if (sel?.value) tTotal += parseInt(sel.value); }
+    });
+    if (!hasAny) { el.style.display='none'; return; }
+    el.style.display = 'flex';
+    el.className = 'weight-total ' + (total === 100 ? 'ok' : total > 100 ? 'over' : 'under');
+    el.textContent = `Gesamtgewichtung aller Ziele: ${total}% ${total===100?'✓ Korrekt':total>100?'– Zu hoch (Ziel: 100%)':'– Noch '+  (100-total)+'% offen'}`;
+  });
+}
+
+// ── INDIVIDUELLE ZIELE ────────────────────────────────────────────
+let indivCount = 0;
+const indivGoals = []; // { id, text, date, pct }
+
+function addIndivGoal() {
+  const list = document.getElementById('indiv-goals-list');
+  if (list.querySelectorAll('.indiv-goal-row').length === 0) {
+    // add column headers first time
+    const hdr = document.createElement('div');
+    hdr.className = 'indiv-row-label';
+    hdr.id = 'indiv-col-hdr';
+    hdr.innerHTML = '<div>Ziel / Massnahme</div><div>Zieldatum</div><div>Gewichtung</div><div></div>';
+    list.insertBefore(hdr, list.firstChild);
+  }
+  if (list.querySelectorAll('.indiv-goal-row').length >= 5) return; // max 5
+
+  const id = ++indivCount;
+  const row = document.createElement('div');
+  row.className = 'indiv-goal-row';
+  row.id = `indiv-row-${id}`;
+  row.innerHTML = `
+    <input type="text" id="indiv-text-${id}" placeholder="Ziel beschreiben …" oninput="updateIndivBadge()">
+    <select id="indiv-date-${id}" onchange="updateIndivBadge()">
+      ${buildDateOptions('')}
+    </select>
+    <select id="indiv-pct-${id}" onchange="updateIndivBadge()">
+      <option value="">–</option>
+      ${[20,40,60,80,100].map(v=>`<option value="${v}">${v}%</option>`).join('')}
+    </select>
+    <button class="btn-remove" onclick="removeIndivGoal(${id})" title="Entfernen">×</button>
+  `;
+  list.appendChild(row);
+  updateIndivBadge();
+}
+
+function removeIndivGoal(id) {
+  const row = document.getElementById(`indiv-row-${id}`);
+  if (row) row.remove();
+  // remove header if no rows left
+  const list = document.getElementById('indiv-goals-list');
+  if (!list.querySelector('.indiv-goal-row')) {
+    const hdr = document.getElementById('indiv-col-hdr');
+    if (hdr) hdr.remove();
+  }
+  updateIndivBadge();
+  updateWeightTotal();
+}
+
+function updateIndivBadge() {
+  const rows = document.querySelectorAll('.indiv-goal-row');
+  const badge = document.getElementById('badge-indiv');
+  const card  = document.getElementById('card-indiv');
+  const filled = [...rows].filter(r => r.querySelector('input[type="text"]')?.value.trim()).length;
+  if (badge) { badge.textContent = `${filled} gew.`; badge.classList.toggle('show', filled>0); }
+  if (card)  card.classList.toggle('has-selection', filled>0);
+  updateWeightTotal();
+}
+
+function collectIndivGoals() {
+  const rows = document.querySelectorAll('.indiv-goal-row');
+  return [...rows].map(r => {
+    const id   = r.id.replace('indiv-row-','');
+    const text = document.getElementById(`indiv-text-${id}`)?.value.trim() || '';
+    const date = document.getElementById(`indiv-date-${id}`)?.value || '31.12.2026';
+    const pct  = document.getElementById(`indiv-pct-${id}`)?.value  || '';
+    return text ? { text, date, pct } : null;
+  }).filter(Boolean);
+}
+
+// ── COLLECT FROM DOM ───────────────────────────────────────────────
+function collectFromDOM() {
+  TARGETS.forEach(t => {
+    const roleGoals = GOALS[t.key][currentRole] || [];
+    const picked = [];
+    roleGoals.forEach((goalText, gi) => {
+      const chk = document.getElementById(`chk-${t.key}-${gi}`);
+      if (!chk?.checked) return;
+      const date = document.getElementById(`date-${t.key}-${gi}`)?.value || '31.12.2026';
+      const pct  = document.getElementById(`pct-${t.key}-${gi}`)?.value  || '';
+      picked.push({ text: goalText, date, pct });
+    });
+    if (picked.length) selections[t.key] = picked;
+    else delete selections[t.key];
+  });
+  // collect individuelle Ziele
+  const indiv = collectIndivGoals();
+  if (indiv.length) selections['indiv'] = indiv;
+  else delete selections['indiv'];
+}
+
+// ── BUILD SUMMARY ──────────────────────────────────────────────────
+function buildSummary() {
+  const vn  = document.getElementById('inp-vorname').value.trim();
+  const nn  = document.getElementById('inp-nachname').value.trim();
+  const abt = document.getElementById('inp-abt').value.trim();
+  const rl  = document.getElementById('inp-rolle').value;
+
+  document.getElementById('sum-name').textContent  = `${vn} ${nn}`;
+  document.getElementById('sum-rolle').textContent = ROLE_LABELS[rl] || '–';
+  document.getElementById('sum-abt').textContent   = abt || '–';
+
+  document.getElementById('print-meta').innerHTML =
+    `Mitarbeiter/in: ${vn} ${nn}<br>Funktion: ${ROLE_LABELS[rl]||'–'}<br>Abteilung: ${abt||'–'}<br>Datum: ${todayCH()}`;
+
+  const container = document.getElementById('sum-targets');
+
+  // standard targets
+  const entries = TARGETS.filter(t => selections[t.key]?.length);
+  const indiv   = selections['indiv'] || [];
+  const hasAny  = entries.length > 0 || indiv.length > 0;
+
+  if (!hasAny) {
+    container.innerHTML = '<div class="empty-note">Keine Ziele wurden zugewiesen.</div>';
+    return;
+  }
+
+  const targetBlocks = entries.map(t => {
+    const rows = selections[t.key].map(g => `
+      <div class="s-goal-row">
+        <div class="s-goal-text">${g.text}</div>
+        <div class="s-date">${g.date || '–'}</div>
+        <div class="s-pct">${g.pct ? g.pct+'%' : '–'}</div>
+      </div>`).join('');
+    return `<div class="s-target-block">
+      <div class="s-target-head">
+        <div class="s-tid">${t.id}</div>
+        <div class="s-tname">${t.title}</div>
+      </div>
+      <div class="s-col-head">
+        <div>Ziel / Massnahme</div>
+        <div style="text-align:center">Zieldatum</div>
+        <div style="text-align:center">Gewichtung</div>
+      </div>
+      ${rows}
+    </div>`;
+  }).join('');
+
+  // individuelle Ziele block
+  const indivBlock = indiv.length ? `<div class="s-target-block">
+    <div class="s-target-head">
+      <div class="s-tid" style="background:#5A5A5A">IND</div>
+      <div class="s-tname">Individuelle Ziele</div>
+    </div>
+    <div class="s-col-head">
+      <div>Ziel / Massnahme</div>
+      <div style="text-align:center">Zieldatum</div>
+      <div style="text-align:center">Gewichtung</div>
+    </div>
+    ${indiv.map(g=>`<div class="s-goal-row">
+      <div class="s-goal-text">${g.text}</div>
+      <div class="s-date">${g.date || '–'}</div>
+      <div class="s-pct">${g.pct ? g.pct+'%' : '–'}</div>
+    </div>`).join('')}
+  </div>` : '';
+
+  container.innerHTML = targetBlocks + indivBlock;
+
+  // Total weight footer
+  const allGoals = [...entries.flatMap(t => selections[t.key]), ...indiv];
+  const totalW = allGoals.reduce((sum,g) => sum + (g.pct ? parseInt(g.pct) : 0), 0);
+  const wClass = totalW===100 ? 'ok' : totalW>100 ? 'over' : 'under';
+  const wText  = totalW===100 ? '✓ Korrekt – Summe ergibt 100%' : totalW>100 ? `⚠ Zu hoch – bitte auf 100% reduzieren` : `⚠ Noch ${100-totalW}% offen – bitte auf 100% ergänzen`;
+  container.innerHTML += `<div class="weight-total ${wClass}" style="margin-top:14px">
+    Gesamtgewichtung aller Ziele: <strong>${totalW}%</strong> &nbsp;${wText}
+  </div>`;
+}
+
+// ── DATE HELPERS (Schweizer Format TT.MM.JJJJ) ────────────────────
+function formatCH(iso) {
+  if (!iso) return '–';
+  const [y,m,d] = iso.split('-');
+  return `${d}.${m}.${y}`;
+}
+
+function todayCH() {
+  const now = new Date();
+  const d = String(now.getDate()).padStart(2,'0');
+  const m = String(now.getMonth()+1).padStart(2,'0');
+  return `${d}.${m}.${now.getFullYear()}`;
+}
+
+// ── PDF ────────────────────────────────────────────────────────────
+function exportPDF() {
+  document.querySelector('.print-header').style.display = 'flex';
+  window.print();
+  setTimeout(() => { document.querySelector('.print-header').style.display = 'none'; }, 1500);
+}
+
+// ── RESET ──────────────────────────────────────────────────────────
+function resetAll() {
+  ['inp-vorname','inp-nachname','inp-abt'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('inp-rolle').value='';
+  document.getElementById('role-hint').classList.remove('show');
+  Object.keys(selections).forEach(k => delete selections[k]);
+  // clear indiv goals
+  const list = document.getElementById('indiv-goals-list');
+  if (list) list.innerHTML = '';
+  indivCount = 0;
+  currentRole = '';
+  goToStep(1);
+}
+</script>
+</body>
+</html>
